@@ -1,29 +1,27 @@
 ---
 name: git-commit-message
-description: Draft a Conventional Commit-style message from the current staged Git diff. Use when the user asks to generate, suggest, write, or prepare a commit message for staged changes.
+description: Draft a Conventional Commit-style message from the staged Git diff. Use when the user asks to generate, suggest, write, or prepare a commit message for staged changes.
 ---
 
 # Git Commit Message
 
-Draft a directly usable commit message from staged changes only. Do not run `git commit`; this skill only proposes commit text unless the user separately approves committing after the proposal.
+Draft a ready-to-use message from staged changes only. Do not run `git commit` unless the user explicitly approves after seeing the proposal.
 
 ## Workflow
 
-1. Run `git diff --staged`.
-2. If the staged diff is empty, stop and tell the user there is no staged diff to use.
-3. Check for unstaged changes with `git diff --quiet` or `git status --short`.
-4. If unstaged changes exist, tell the user in Chinese that they are not included in the commit message basis.
-5. Generate the commit message only from `git diff --staged`.
+1. Inspect `git diff --staged`; if empty, stop.
+2. Check unstaged changes with `git diff --quiet` or `git status --short`.
+3. If present, tell the user they are excluded.
+4. Base the message only on the staged diff.
 
 ## Message Rules
 
-- Write the commit message in English.
-- Use Conventional Commits, for example `feat:`, `fix:`, `docs:`, `refactor:`, `test:`, or `chore:`.
-- Add a scope only when the staged diff has a clear focused area.
-- Add a 1-3 line body only when it adds useful why/context.
-- Do not mention unstaged changes in the commit message itself.
+- Write in English and use Conventional Commit style, such as `feat:`, `fix:`, `docs:`, `refactor:`, `test:`, or `chore:`.
+- Add a scope only for a clear focused area.
+- Add a 1-3 line body only for useful why/context.
+- Never mention unstaged changes inside the message.
 
 ## Output
 
-Return the suggested commit message first in a Markdown code block, followed by:
-`当前仅生成提交内容，尚未执行 git commit；如需继续提交，必须等待用户明确批准。`
+Return the message first in a Markdown code block, then say:
+"This is only a proposed commit message; no `git commit` has been run. I will wait for explicit approval before committing."

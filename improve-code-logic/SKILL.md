@@ -1,55 +1,56 @@
 ---
 name: improve-code-logic
-description: Improve code logic by identifying behavioral correctness issues, edge cases, failure paths, state and data flow inconsistencies, and resource lifecycle risks, then producing prioritized fix plans. Use when the user asks to audit, inspect, review, or improve code logic without focusing on style-only feedback.
+description: Improve code logic by finding correctness, simplicity, edge-case, failure-path, hot-path performance, flow, and resource lifecycle risks, then producing prioritized fix plans. Use when the user asks to assess or improve code behavior, not style-only concerns.
 ---
 
 # Improve Code Logic
 
-Improve code correctness, stability, predictability, and consistency with the intended semantics. Prioritize actual behavior risks over style, naming, formatting, or general maintainability advice.
+Improve correctness, stability, predictability, and semantic consistency. Favor simple, direct, elegant logic. Prioritize behavior and hot-path performance risks over style, naming, formatting, or general maintainability.
 
 ## Workflow
 
-1. Determine the improvement scope from the user request, staged diff, provided files, pull request, or relevant local code.
-2. Read enough surrounding code to understand the contract, caller expectations, data model, state transitions, side effects, and error semantics.
-3. Trace the normal path, boundary conditions, invalid inputs, empty or zero values, partial failures, retries, cancellation or interruption, and cleanup paths.
-4. Compare each branch, return value, state mutation, emitted error, and external side effect against the intended behavior.
-5. Report only issues with a plausible behavioral impact. Do not inflate style, structure, naming, comments, or test organization into logic findings unless they already cause incorrect behavior or a concrete implementation risk.
-6. Separate confirmed findings from assumptions, open questions, and lower-confidence risks.
-7. Provide a concrete fix plan for each real issue. Do not edit code unless the user explicitly asks for implementation.
+1. Determine scope from the request, diff, files, PR, or local code.
+2. Read enough surrounding code to understand contracts, callers, data, state, side effects, resources, and errors.
+3. Trace normal paths, boundaries, invalid inputs, partial failures, retries, cancellation, repeated calls, hot paths, and cleanup.
+4. Compare branches, returns, mutations, errors, and external effects with intended behavior.
+5. Report only plausible behavior risks; keep assumptions and uncertainty explicit.
+6. Provide the smallest practical fix plan. Do not edit code unless asked.
 
 ## Improvement Priorities
 
-- Correct branching, condition ordering, and fallback behavior.
-- Consistent inputs, outputs, return values, errors, and state changes.
-- Complete handling for null, empty, zero, invalid, malformed, duplicate, missing, out-of-range, and unexpected values.
-- Correct behavior under partial success, failed dependencies, timeouts, cancellation, retries, and concurrent or repeated calls.
-- Resource acquisition, release, reuse, ownership, and interruption paths that cannot leak, dangle, double-close, or reuse invalid state.
-- Error semantics that expose the real failure and remain useful to callers or users.
-- Data flow and state flow that preserve invariants across function, module, storage, network, and UI boundaries.
-- Simpler implementations when they materially reduce behavior risk.
+- Branches, condition order, fallbacks, returns, and state changes match semantics.
+- Null, empty, zero, invalid, malformed, duplicate, missing, out-of-range, and unexpected values are handled.
+- Partial success, dependency failure, timeout, cancellation, retry, concurrency, and repeated-call behavior is correct.
+- Hot paths avoid avoidable work, allocations, I/O, contention, or algorithmic cost.
+- Resource ownership, release, reuse, and interruption paths cannot leak, dangle, double-close, or reuse invalid state.
+- Errors expose the real failure and remain useful to callers or users.
+- Data and state flow preserve invariants across boundaries.
+- Simpler implementations reduce behavior risk; apply Occam's razor.
 
 ## Negative Constraints
 
-- Do not report speculative issues that depend on unlikely assumptions without labeling them as assumptions.
-- Do not treat every missing test as a logic bug. Mention missing tests only when they hide or fail to guard a concrete behavior risk.
-- Do not focus on readability, architecture, or refactoring preferences unless they directly create a correctness risk.
-- Do not recommend broad rewrites when a localized fix would address the behavior problem.
-- Do not hide uncertainty. If the intended behavior is unclear, state the ambiguity and explain what evidence would resolve it.
+- Do not present speculation as fact.
+- Do not over-design or add defensive code for scenarios that cannot realistically occur.
+- Do not turn style, structure, naming, comments, or test organization into logic findings unless they create behavior risk.
+- Do not treat missing tests as logic bugs unless they hide or fail to guard a concrete risk.
+- Do not report performance concerns outside hot paths unless they create a plausible user, cost, or stability risk.
+- Do not recommend broad rewrites when a localized fix works.
+- Do not hide unclear intent; state the ambiguity and needed evidence.
 
 ## Output Format
 
-Start with prioritized findings. For each finding, include:
+Start with prioritized findings. For each, include:
 
 - Severity: `Critical`, `High`, `Medium`, or `Low`.
 - Location: file and line number when available.
-- Problem: the incorrect or risky behavior.
-- Impact: what can go wrong for callers, users, data, or runtime stability.
+- Problem: incorrect or risky behavior.
+- Impact: what can go wrong.
 - Fix plan: the smallest practical correction.
 
 After findings, include:
 
-- Open questions or assumptions, only if needed.
-- Test recommendations for the reported behavior risks, not generic coverage advice.
-- A brief summary if the review is non-trivial.
+- Questions or assumptions, only if needed.
+- Test recommendations tied to reported risks.
+- Brief summary for non-trivial reviews.
 
 If no logic issues are found, say that clearly and mention any residual risk from limited scope or missing runtime context.

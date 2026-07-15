@@ -1,52 +1,54 @@
 ---
 name: improve-code-style
-description: Improve code style for naming, structure, cohesion, coupling, control flow clarity, abstraction quality, consistency, simplicity, and long-term maintainability. Use when the user asks to audit, inspect, review, or improve code style without focusing on pure logic bugs, missing tests, or comment coverage.
+description: Improve code style by finding maintainability issues in naming, structure, cohesion, coupling, control flow, abstraction restraint, consistency, and simplicity, then producing prioritized improvement plans. Use when the user asks to assess or improve code style, not pure logic bugs, test gaps, or documentation coverage.
 ---
 
 # Improve Code Style
 
-Improve code style as a maintainability and clarity concern. Favor code that expresses intent directly, keeps responsibilities focused, and uses abstraction only when it reduces real complexity.
+Improve clarity and maintainability. Apply Occam's razor: favor direct, concise code, focused responsibilities, tidy consistency, and abstractions only when they reduce real complexity.
 
 ## Workflow
 
-1. Determine the improvement scope from the user request, changed files, provided code, or relevant local context.
-2. Read enough surrounding code to understand local conventions, module boundaries, naming patterns, and existing abstractions.
-3. Evaluate names, structure, responsibility boundaries, control flow, consistency, abstraction choices, and complexity.
-4. Prefer the project's existing conventions over generic preferences unless the convention itself creates clear maintenance cost.
-5. Report only style issues that materially affect readability, consistency, cohesion, coupling, or maintainability.
-6. Keep logic bugs, missing test coverage, and documentation gaps separate from style findings unless they are directly caused by style or structure choices.
-7. Provide a concrete improvement plan. Do not edit code unless the user explicitly asks for implementation.
+1. Determine scope from the request, changed files, code, or local context.
+2. Read enough surrounding code to learn conventions, boundaries, naming patterns, and abstractions.
+3. Evaluate names, responsibilities, control flow, consistency, abstraction, coupling, cohesion, and complexity.
+4. Prefer project conventions unless they create clear maintenance cost.
+5. Report only issues with material readability, consistency, or maintainability impact.
+6. Keep logic bugs, test gaps, and documentation gaps separate unless caused by style or structure.
+7. Provide the smallest practical improvement plan. Do not edit code unless asked.
 
 ## Improvement Priorities
 
-- Names should be accurate, natural, stable, and clear about responsibility, meaning, and boundaries.
-- Functions, types, files, and modules should have focused responsibilities and avoid mixing unrelated concerns.
-- Control flow should be direct and easy to follow; avoid unnecessary nesting, indirection, hidden conventions, and cleverness.
-- Similar semantics should use consistent local patterns, including error handling, return paths, state changes, and helper usage.
-- Moderate duplication is acceptable when removing it would introduce more indirection or weaker cohesion.
-- Abstractions, interfaces, wrappers, layers, and extension points should have clear value beyond formal reuse.
-- Simple problems should keep simple implementations; remove clever or generalized code that no longer earns its complexity.
-- New packages, files, types, functions, or helpers should exist only when they clarify intent or reduce meaningful complexity.
-- Similar modules should remain symmetrical in naming, structure, and local conventions even when they do not share common code.
+- Names are accurate, natural, stable, orderly, and clear about responsibility and boundaries.
+- Functions, types, files, and modules stay focused and avoid mixed concerns.
+- Control flow is direct and concise; avoid needless nesting, indirection, hidden conventions, and cleverness.
+- Similar semantics use consistent local patterns for errors, returns, state changes, and helpers.
+- Moderate duplication is acceptable when abstraction would add indirection or weaken cohesion.
+- Abstractions, helpers, constants, wrappers, layers, and extension points have value beyond formal reuse.
+- Simple problems stay simple; remove generalized code that no longer earns its cost.
+- Keep logic local when extraction would mainly satisfy DRY rather than clarify intent.
+- New packages, files, types, functions, helpers, or constants clarify intent or reduce meaningful complexity.
+- Related files, functions, variables, and modules stay tidy and consistent without forcing a rigid pattern.
 
 ## Negative Constraints
 
 - Do not present personal taste as a style rule.
 - Do not recommend abstraction for its own sake.
-- Do not trade local readability, high cohesion, or low coupling for superficial reuse.
+- Do not extract helpers or constants merely to satisfy DRY.
+- Do not trade readability, cohesion, or low coupling for superficial reuse.
 - Do not solve a simple issue with a more complex structure.
-- Do not recommend new entities without a clear benefit over adjusting existing code.
-- Do not weaken overall consistency through local naming, splitting, or structure choices.
+- Do not add new entities without clear benefit over adjusting existing code.
+- Do not weaken overall consistency through local naming, splitting, or structure.
 - Do not treat formatter output or trivial whitespace as findings unless it conflicts with an enforced project standard.
 
 ## Output Format
 
-Start with prioritized findings. For each finding, include:
+Start with prioritized findings. For each, include:
 
 - Severity: `High`, `Medium`, or `Low`.
 - Location: file and line number when available.
-- Problem: the naming, structure, complexity, consistency, or maintainability issue.
-- Impact: why it makes the code harder to read, change, or reason about.
+- Problem: naming, structure, complexity, consistency, or maintainability issue.
+- Impact: why the code is harder to read, change, or reason about.
 - Improvement plan: the smallest practical style or structure change.
 
 After findings, include:

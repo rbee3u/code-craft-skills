@@ -1,4 +1,4 @@
 interface:
   display_name: "Improve Code Logic"
-  short_description: "Improve correctness and logic risks"
-  default_prompt: "Use $improve-code-logic to improve this code's correctness, edge cases, and failure-path logic."
+  short_description: "Improve correctness, simplicity, and hot paths"
+  default_prompt: "Use $improve-code-logic to improve this code's correctness, simplicity, edge cases, failure paths, and hot-path performance."
