@@ -1,0 +1,4 @@
+interface:
+  display_name: "Improve Unit Tests"
+  short_description: "Improve unit test coverage and quality"
+  default_prompt: "Use $improve-unit-tests to improve these unit tests for behavior coverage, assertions, brittleness, and maintainability."

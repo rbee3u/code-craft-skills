@@ -1,0 +1,4 @@
+interface:
+  display_name: "Improve Documents"
+  short_description: "Improve docs and comment quality"
+  default_prompt: "Use $improve-documents to improve README, AGENTS, docs, and code comments for accuracy, clarity, and useful scope."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Improve Code Style"
+  short_description: "Improve naming, structure, maintainability"
+  default_prompt: "Use $improve-code-style to improve this code's naming, structure, simplicity, consistency, and maintainability."
