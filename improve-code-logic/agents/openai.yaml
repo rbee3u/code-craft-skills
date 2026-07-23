@@ -1,4 +1,3 @@
 interface:
   display_name: "Improve Code Logic"
   short_description: "Find behavior risks and targeted fixes"
-  default_prompt: "Use $improve-code-logic to find behavior, edge-case, failure-path, lifecycle, and hot-path risks with fixes."

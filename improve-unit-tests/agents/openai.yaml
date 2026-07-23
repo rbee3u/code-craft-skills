@@ -1,4 +1,3 @@
 interface:
   display_name: "Improve Unit Tests"
   short_description: "Improve risk-based test quality"
-  default_prompt: "Use $improve-unit-tests to improve key-path coverage, scenarios, assertions, brittleness, and regression signal."

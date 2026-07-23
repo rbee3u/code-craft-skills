@@ -1,15 +1,12 @@
 ---
 name: grilling
-description: Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking or uses any grill-related trigger phrase.
+description: Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' trigger phrases.
 ---
 
-# Grilling
+Interview me relentlessly about every aspect of this until we reach a shared understanding. Walk down each branch of the decision tree, resolving dependencies between decisions one-by-one. For each question, provide your recommended answer.
 
-Interview the user relentlessly until reaching shared understanding. Walk the
-decision tree branch by branch, resolving dependencies one by one.
+Ask the questions one at a time, waiting for feedback on each question before continuing. Asking multiple questions at once is bewildering.
 
-- Ask one question at a time and wait for the answer; multiple questions at once
-  are bewildering.
-- Provide your recommended answer with each question.
-- Look up discoverable facts yourself; put decisions to the user.
-- Do not act until the user confirms the shared understanding.
+If a *fact* can be found by exploring the environment (filesystem, tools, etc.), look it up rather than asking me. The *decisions*, though, are mine — put each one to me and wait for my answer.
+
+Do not act on it until I confirm we have reached a shared understanding.

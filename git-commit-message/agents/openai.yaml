@@ -1,4 +1,3 @@
 interface:
   display_name: "Git Commit Message"
   short_description: "Draft commit messages from staged changes"
-  default_prompt: "Use $git-commit-message to draft a Conventional Commit message from my staged Git changes only."

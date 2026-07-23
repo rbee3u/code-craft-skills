@@ -29,10 +29,9 @@ for when the skill should be used). Write the body in English as short
 imperative rules; prefer sections such as a purpose statement, `Workflow`,
 `Priorities`, `Negative Constraints`, and `Output Format` when they fit.
 
-In `agents/openai.yaml`, keep `interface.display_name`,
-`interface.short_description`, and `interface.default_prompt` (which mentions
-`$skill-name`) synchronized with `SKILL.md`. Do not add optional fields unless
-the user explicitly asks.
+In `agents/openai.yaml`, keep only `interface.display_name` and
+`interface.short_description` synchronized with `SKILL.md`. Do not add optional
+fields unless the user explicitly asks.
 
 ## Naming
 
