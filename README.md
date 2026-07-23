@@ -12,6 +12,7 @@ generic best practices.
 ## Skills
 
 - `git-commit-message`: draft Conventional Commit messages from staged changes.
+- `grilling`: stress-test plans through one-question-at-a-time interviews.
 - `improve-code-logic`: find behavior risks and produce targeted fix plans.
 - `improve-code-style`: improve naming, structure, simplicity, and consistency.
 - `improve-unit-tests`: improve risk-based test coverage, assertions, and
