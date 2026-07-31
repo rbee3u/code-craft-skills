@@ -11,6 +11,7 @@ generic best practices.
 
 ## Skills
 
+- `domain-modeling`: build and sharpen a project's domain model.
 - `git-commit-message`: draft Conventional Commit messages from staged changes.
 - `grilling`: stress-test plans through one-question-at-a-time interviews.
 - `improve-code-logic`: find behavior risks and produce targeted fix plans.
