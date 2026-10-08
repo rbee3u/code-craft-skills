@@ -13,7 +13,7 @@ generic best practices.
 
 - `domain-modeling`: build and sharpen a project's domain model.
 - `git-commit-message`: draft Conventional Commit messages from staged changes.
-- `grilling`: stress-test plans through one-question-at-a-time interviews.
+- `grilling`: stress-test plans through rounds of questions and recommended answers.
 - `improve-code-logic`: find behavior risks and produce targeted fix plans.
 - `improve-code-style`: improve naming, structure, simplicity, and consistency.
 - `improve-unit-tests`: improve risk-based test coverage, assertions, and
